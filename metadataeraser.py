@@ -5,17 +5,20 @@ import re
 import subprocess
 import os
 
-#Specify dir location
-path_of_the_directory = 'C:/'
+#specify directory location
+path_directory = str(input('enter path directory: '))
 
-with open("metadata.txt", mode ="w") as f:
-    for files in os.listdir(path_of_the_directory):
-        f.write(os.system('exiftool' + str(files))\n)
-        f.write('--------------------------------------------------')
-        os.system('mat2 ' + str(files))
+#create clean.txt and add all the metadata into it
+#then erase metadata
+for file in os.listdir(path_directory):
+    os.system('exiftool ' + str(file) + ' >>' + path_directory +' clean.txt')
+    os.system('echo -------------------------------------------- >> clean.txt')
+    os.system('mat2 ' + str(file))
 
-os.mkdir('path_of_the_directory/clean')
-end = re.search(cleaned\.\w\w\w)
-for files in os.listdir(path_of_the_directory):
-    if files.endswith(end)
-        os.system('mv' + str(files) + 'clean')
+#create directory clean and move clened files into it
+os.mkdir(path_directory + '/clean')
+os.system('mv clean.txt' + path_directory + '/clean')
+end = re.search('cleaned\.\w\w\w$')
+for files in os.listdir(path_directory):
+    if files.endswith(end):
+        os.system('mv ' + str(files) + ' clean')
