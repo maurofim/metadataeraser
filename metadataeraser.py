@@ -1,8 +1,10 @@
 #!/usr/bin/env python3
+#exiftool needed
 #mat2 needed
 
 import re
 import os
+import subprocess
 #specify directory location
 path = str(input('enter path directory: '))
 
@@ -13,8 +15,13 @@ os.chdir(path)
 #then erase metadata
 for file in os.listdir(path):
     os.system('exiftool ' + '"' + file + '"' + ' >> clean.txt')
+    cleaning_command = subprocess.Popen(['mat2', '"', file, '"'], stdout = subprocess.PIPE)
+    output = str(cleaning_command.communicate())
+    if output == '':
+        os.system('CLEANED >> clean.txt')
+    else:
+        os.system(output + ' >> clean.txt')
     os.system('echo -------------------------------------------- >> clean.txt')
-    os.system('mat2 ' + '"' + file + '"')
 
 #create directory clean and move cleaned files into it
 os.mkdir(path + '/clean')
