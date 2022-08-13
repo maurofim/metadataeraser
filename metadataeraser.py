@@ -19,7 +19,7 @@ for file in os.listdir(path):
 #create directory clean and move cleaned files into it
 os.mkdir(path + '/clean')
 os.system('mv clean.txt ' + path + '/clean')
-end = '^.*cleaned.*$'
+end = '^.*\.cleaned\..*$'
 for file in os.listdir(path):
     if re.match(end, file):
         os.system('mv ' + '"' + file + '"' + ' ' + path + '/clean')
