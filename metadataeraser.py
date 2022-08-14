@@ -38,7 +38,7 @@ os.mkdir(new_path + '/' + final_dir.group() + '.cleaned')
 os.mkdir(new_path + '/' + final_dir.group() + '.cleaned_info')
 os.system('mv clean.txt' + ' ' + new_path + '/' + final_dir.group() + '.cleaned_info')
 os.system('mv not_clean.txt' + ' ' + new_path + '/' + final_dir.group() + '.cleaned_info')
-r_file = '^.*\.cleaned\..*$'
+r_file = '\.cleaned\..*$'
 for file in os.listdir(path):
     if re.match(r_file, file):
         os.system('mv ' + '"' + file + '"' + ' ' + new_path + '/' + final_dir.group() + '.cleaned')
