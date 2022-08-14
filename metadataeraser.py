@@ -25,12 +25,20 @@ for file in os.listdir(path):
         os.system('exiftool ' + '"' + file + '"' + ' >> not_clean.txt')
         os.system('echo -------------------------------------------- >> not_clean.txt')
 
+#create path to the directory before
+r_path = '\/[\w]*$'
+final_dir = re.search(r_path, path)
+final_dir_len = len(final_dir.group())
+path_len = len(path)
+new_path_len = path_len - final_dir_len
+new_path = path[0:new_path_len]
+
 #create directories and move their respective files into them, .clean. >> /clean and .txt >> /clean_info
-os.mkdir(path + '/cleaned')
-os.mkdir(path + '/cleaned_info')
-os.system('mv clean.txt' + ' ' + path + '/cleaned_info')
-os.system('mv not_clean.txt' + ' ' + path + '/cleaned_info')
-end = '^.*\.cleaned\..*$'
+os.mkdir(new_path + '/' + final_dir.group() + '.cleaned')
+os.mkdir(new_path + '/' + final_dir.group() + '.cleaned_info')
+os.system('mv clean.txt' + ' ' + new_path + '/' + final_dir.group() + '.cleaned_info')
+os.system('mv not_clean.txt' + ' ' + new_path + '/' + final_dir.group() + '.cleaned_info')
+r_file = '^.*\.cleaned\..*$'
 for file in os.listdir(path):
-    if re.match(end, file):
-        os.system('mv ' + '"' + file + '"' + ' ' + path + '/cleaned')
+    if re.match(r_file, file):
+        os.system('mv ' + '"' + file + '"' + ' ' + new_path + '/' + final_dir.group() + '.cleaned')
