@@ -29,7 +29,7 @@ for file in os.listdir(path):
 os.mkdir(path + '/cleaned')
 os.mkdir(path + '/info')
 os.system('mv clean.txt' + ' ' + path + '/info')
-os.system('mv not_clean.txt' + ' ' + path + '/clean_info')
+os.system('mv not_clean.txt' + ' ' + path + '/info')
 end = '^.*\.cleaned\..*$'
 for file in os.listdir(path):
     if re.match(end, file):
