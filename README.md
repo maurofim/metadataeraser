@@ -2,6 +2,7 @@
 
 ***********************
 Coded by maurofim
+mauro.fim92@gmail.com
 ***********************
 
 Automates the use of 'mat2' with python, to work with the files in a directory specify by the user;
