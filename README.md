@@ -10,4 +10,3 @@ it erases all metadata of the files and generates a txt file (cleaned.txt) with 
 was cleaned (using 'exiftool'). It generates a copy of the directory tree in case there are subdirectories
 and puts the cleaned files in their respective directory; the files that couldn't be cleaned are copied
 and the information of their location and metadata would be in a separate txt file(not_cleaned.txt).
-Works only on linux yet...
