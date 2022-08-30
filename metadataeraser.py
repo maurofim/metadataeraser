@@ -2,6 +2,7 @@
 #exiftool needed
 #mat2 needed
 """Cleans all metadata in a specified directory using mat2 and retrieves metadata with exiftool"""
+from concurrent import futures #multiprocessor
 
 import re
 import os
@@ -86,7 +87,9 @@ def main():
     """master function"""
     for root in os.walk(Data.path):
         cleaned_dirs(root[0])
+    executor = futures.ProcessPoolExecutor() #multiprocessor
     for root in os.walk(Data.path):
-        cleaned_files(root[0], root[2])
+        executor.submit(cleaned_files, root[0], root[2]) #multiprocessor
+    executor.shutdown() #multiprocessor
 
 main()
