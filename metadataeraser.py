@@ -14,12 +14,12 @@ PATH = str(input('enter path directory: '))
 class Data():
     """Storing most used data to a class variable"""
     path = PATH
-    current_dir = re.search('[/][A-za-z0-9 ]*$', path).group()
+    current_dir = re.search('[/][A-za-z0-9 -_]*$', path).group()
     parent_dir = path.replace(current_dir,'')
 
 def cleaned_dirs(root):
     """create cleaned directories"""
-    r_path = '[/][A-za-z0-9 ]*'
+    r_path = '[/][A-za-z0-9 -_]*'
     dir_path_end = root.replace(Data.parent_dir, '')
     dir_list = re.findall(r_path, dir_path_end)
     cleaned_path = ''
@@ -33,7 +33,7 @@ def cleaned_dirs(root):
 
 def path_cleaned_dir(origin_file, root):
     """find cleaned dir for file.cleaned"""
-    r_path = '[/][A-za-z0-9 ]*'
+    r_path = '[/][A-za-z0-9 -_]*'
     final_path = root.replace(Data.parent_dir, '')
     dir_list = re.findall(r_path, final_path)
     cleaned_path = ''
